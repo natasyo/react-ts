@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { HeaderComponent } from '../components/HeaderComponent/HeaderComponent';
-import { ProductsComponent } from '../components/ProductComponent/ProductsComponent';
 // import PropTypes from 'prop-types';
 
 class NotFoundPage extends Component {
