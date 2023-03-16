@@ -1,9 +1,9 @@
 // @flow
 import * as React from 'react';
 import './SearchBar.scss';
-import { ChangeEvent, FormEvent } from 'react';
+import { ChangeEvent } from 'react';
 
-type Props = {};
+type Props = unknown;
 type State = {
   value: string;
 };
@@ -24,7 +24,7 @@ export class SearchBar extends React.Component<Props, State> {
   componentWillUnmount() {
     localStorage.setItem('search', this.state.value);
   }
-  componentDidUpdate(prevProps: Readonly<Props>, prevState: Readonly<State>, snapshot?: any) {
+  componentDidUpdate() {
     localStorage.setItem('search', this.state.value);
   }
 
