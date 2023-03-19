@@ -36,6 +36,7 @@ export class SearchBar extends React.Component<Props, State> {
           className={'search-bar__field'}
           value={this.state.value}
           onChange={this.changeValue}
+          placeholder={'Search'}
         />
         <button className={'search-bar__btn'}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
