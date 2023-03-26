@@ -18,6 +18,9 @@ export class HeaderComponent extends React.Component {
             <Link to="/about" className={'header__menu-item'}>
               About
             </Link>
+            <Link to="/form" className={'header__menu-item'}>
+              Form
+            </Link>
           </nav>
           <SearchBar />
         </div>

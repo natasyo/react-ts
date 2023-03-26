@@ -1,0 +1,23 @@
+.form-filed{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  &__label{
+    margin-bottom: 5px;
+  }
+  &__input{
+    padding: 5px 10px;
+    border-radius: 4px;
+  }
+  &__file{
+    flex-direction: row;
+    align-items: center;
+  }
+  &__file-input{
+    display: none;
+  }
+  &__icon{
+    width: 15px;
+    margin-right: 5px;
+  }
+}
