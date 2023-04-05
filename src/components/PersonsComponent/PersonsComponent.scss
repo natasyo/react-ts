@@ -1,0 +1,13 @@
+.persons{
+  margin-top: 25px;
+}
+.person{
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #004444;
+  &__image{
+    img{
+      max-height: 300px;
+    }
+  }
+}
