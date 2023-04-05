@@ -9,17 +9,15 @@ import './ProductsComponent.scss';
 // type Props = {};
 // type State = {};
 
-export class ProductsComponent extends React.Component {
-  render() {
-    return (
-      <div className={'products'}>
-        {data.products.map((productItem) => (
-          <ProductItemComponent
-            product={productItem as unknown as IProduct}
-            key={productItem.id.toString()}
-          />
-        ))}
-      </div>
-    );
-  }
+export function ProductsComponent() {
+  return (
+    <div className={'products'}>
+      {data.products.map((productItem) => (
+        <ProductItemComponent
+          product={productItem as unknown as IProduct}
+          key={productItem.id.toString()}
+        />
+      ))}
+    </div>
+  );
 }
