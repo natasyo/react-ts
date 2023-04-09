@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ProductsComponent } from '../components/ProductComponent/ProductsComponent';
+import { AnimeComponent } from '../components/AnimeComponent/AnimeComponent';
 
 class MainPage extends Component {
   render() {
@@ -8,7 +8,7 @@ class MainPage extends Component {
         <div className={'content'}>
           <div className="container">
             <h1>Main page</h1>
-            <ProductsComponent />
+            <AnimeComponent />
           </div>
         </div>
       </>

@@ -1,0 +1,13 @@
+.pagination{
+  display: flex;
+  margin-top: 16px;
+  &__item{
+    border: 1px solid #333333;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+  }
+}

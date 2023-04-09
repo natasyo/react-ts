@@ -1,0 +1,57 @@
+.anime{
+  position: relative;
+  padding-bottom: 60px;
+  &__image{
+    height: 100%;
+    width: 100%;
+    img{
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  &__info{
+    position: absolute;
+    bottom: 0;
+    padding:0 4px 8px;
+    max-height: 100%;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  &__desc{
+    max-height: 0;
+    transition: all ease 0.5s;
+    overflow: hidden;
+  }
+  &__title{
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  &__producers{
+    font-size: 0.9em;
+    a{
+      color: #1c1d28;
+      text-decoration: none;
+      display: inline-block;
+      margin-right: 3px;
+      &:hover{
+        text-decoration: underline;
+      }
+    }
+  }
+  &:hover{
+    overflow: auto;
+    .anime__info{
+      background: #a3aab2e6;
+    }
+    .anime__desc{
+      max-height: 464px;
+      overflow: hidden;
+      transition: all ease 0.5s;
+      padding-bottom: 16px;
+    }
+  }
+}
