@@ -27,4 +27,5 @@ export interface IPagination {
 }
 export interface ICharacterResult {
   results: ICharacter[];
+  info: IPagination;
 }
