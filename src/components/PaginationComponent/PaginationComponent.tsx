@@ -14,17 +14,32 @@ const count = 10;
 export function PaginationComponent(props: Props) {
   if (props.pagination) {
     const pageItems: Array<number> = [];
+
+    const pageStart =
+      props.page - Math.floor(count / 2) > 1 ? props.page - Math.floor(count / 2) : 1;
     const maxPage =
-      props.page + count >= props.pagination.pages ? props.pagination.pages : props.page + count;
-    for (let i = props.page; i < maxPage; i++) {
+      pageStart + count >= props.pagination.pages ? props.pagination.pages : pageStart + count;
+    for (let i = pageStart; i < maxPage; i++) {
       pageItems.push(i);
     }
     return (
       <div className={'pagination'}>
+        <div
+          className={props.page - 1 < 1 ? 'pagination__item_disable' : 'pagination__item'}
+          onClick={(event) => {
+            props.onChangePage(event, props.page - 1);
+          }}
+        >
+          prev
+        </div>
         {pageItems.map((page) => {
           return (
             <div
-              className={'pagination__item'}
+              className={
+                page === props.page
+                  ? 'pagination__item pagination__item_current'
+                  : 'pagination__item'
+              }
               key={page}
               onClick={(event) => {
                 props.onChangePage(event, page);
@@ -34,6 +49,18 @@ export function PaginationComponent(props: Props) {
             </div>
           );
         })}
+        <div
+          className={
+            props.page + 1 > props.pagination.pages
+              ? 'pagination__item_disable'
+              : 'pagination__item'
+          }
+          onClick={(event) => {
+            props.onChangePage(event, props.page - 1);
+          }}
+        >
+          next
+        </div>
       </div>
     );
   } else return <div className={'pagination__item'}>1</div>;
