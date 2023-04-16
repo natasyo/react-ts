@@ -3,7 +3,9 @@ import * as React from 'react';
 import './SearchBar.scss';
 import { ChangeEvent } from 'react';
 
-type Props = unknown;
+type Props = {
+  onChangeValue: (event: ChangeEvent) => void;
+};
 type State = {
   value: string;
 };
@@ -19,7 +21,7 @@ export class SearchBar extends React.Component<Props, State> {
   }
   changeValue(e: ChangeEvent<HTMLInputElement>) {
     this.setState({ value: e.target.value.toString() });
-    // console.log(e.target.value);
+    this.props.onChangeValue(e);
   }
   componentWillUnmount() {
     localStorage.setItem('search', this.state.value);

@@ -4,7 +4,7 @@ import { FormComponent } from '../components/FormComponent/FormComponent';
 import { IPerson } from '../types/iPerson';
 import { PersonsComponent } from '../components/PersonsComponent/PersonsComponent';
 
-type Props = undefined;
+type Props = unknown;
 type State = {
   persons: IPerson[];
 };

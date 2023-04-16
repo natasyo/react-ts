@@ -7,22 +7,23 @@ import { CharacterItemComponent } from './CharacterItemComponent/CharacterItemCo
 import './CharacterStyle.scss';
 import { PaginationComponent } from '../PaginationComponent/PaginationComponent';
 
-// type Props = {
-//
-// };
-export const CharactersComponent = () => {
+type Props = {
+  searchStr: string;
+};
+export const CharactersComponent = (props: Props) => {
   const [page, setPage] = useState(1);
   const [characters, setCharacters] = useState<ICharacter[]>([]);
   const [pagination, setPagination] = useState<IPagination>();
   const characterController = new CharacterController();
   useEffect(() => {
-    characterController.getCharacters(setCharacters, setPagination, page);
+    characterController.getCharacters(setCharacters, setPagination, props.searchStr, page);
+    console.log(localStorage.getItem('search'));
   }, []);
 
   console.log(pagination, characters);
   function changePage(event: MouseEvent, page: number) {
     setPage(page);
-    characterController.getCharacters(setCharacters, setPagination, page);
+    characterController.getCharacters(setCharacters, setPagination, props.searchStr, page);
   }
   return (
     <>
