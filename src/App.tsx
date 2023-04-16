@@ -1,34 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import './App.css';
+import React, { ChangeEvent, useState } from 'react';
+import NotFoundPage from './pages/NotFoundPage';
+import AboutPage from './pages/AboutPage';
+import MainPage from './pages/MainPage';
+import { FormPage } from './pages/FormPage';
+import { HeaderComponent } from './components/HeaderComponent/HeaderComponent';
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [search, setSearch] = useState('');
+  const navigate = useNavigate();
+  function searchCharacter(event: ChangeEvent) {
+    setSearch((event.target as HTMLInputElement).value);
+    navigate(`/?search=${search}`);
+  }
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <HeaderComponent onSearch={searchCharacter} />
+      <Routes>
+        <Route path={'/'} element={<MainPage search={search} />} />
+        <Route path={'/about'} element={<AboutPage />} />
+        <Route path={'/form'} element={<FormPage />} />
+        <Route path={'*'} element={<NotFoundPage />} />
+      </Routes>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

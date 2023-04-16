@@ -1,0 +1,15 @@
+.header{
+  padding: 15px;
+  &__menu-item{
+    font-size: 15px;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: 800;
+    font-family: sans-serif;
+    color: black;
+  }
+  &__container{
+    display: flex;
+    justify-content: space-between;
+  }
+}

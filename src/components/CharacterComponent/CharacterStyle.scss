@@ -1,0 +1,42 @@
+.character{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 15px;
+  &__image{
+    height: 304px;
+    overflow: hidden;
+    img{
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  &__name{
+    font-weight: 600;
+    font-size: 16px;
+  }
+  &__item{
+    position: relative;
+    padding-bottom: 50px;
+    &:hover{
+      .character__info{
+        background: rgb(90 129 193 / 56%);
+        transition:0.5s ease-in-out all;
+      }
+      .character__info-more{
+        max-height: 300px;
+      }
+    }
+  }
+  &__info{
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
+    background: #fff;
+    transition:0.5s ease all;
+  }
+  &__info-more{
+    max-height: 0;
+    overflow: hidden;
+    transition:0.5s ease all;
+  }
+}

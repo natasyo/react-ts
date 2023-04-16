@@ -1,0 +1,21 @@
+.pagination{
+  display: flex;
+  justify-content: center;
+  &__item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    border: 1px solid #000;
+    margin: 5px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  &__item_current{
+    background: aquamarine;
+  }
+  &__item_disable{
+    display: none;
+  }
+}
