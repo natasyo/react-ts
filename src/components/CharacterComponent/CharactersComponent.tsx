@@ -1,38 +1,42 @@
 // @flow
 import * as React from 'react';
-import { useEffect, useState, MouseEvent } from 'react';
-import { ICharacter, IPagination } from '../../types';
-import { CharacterController } from '../../Controllers';
+import { useState, MouseEvent } from 'react';
+import { ICharacterResult } from '../../types';
 import { CharacterItemComponent } from './CharacterItemComponent/CharacterItemComponent';
 import './CharacterStyle.scss';
 import { PaginationComponent } from '../PaginationComponent/PaginationComponent';
+import { useSelector } from 'react-redux';
 
-type Props = {
-  searchStr: string;
-};
-export const CharactersComponent = (props: Props) => {
+import { useGetCharactersQuery } from '../../store/CharacterAPI';
+import type { RootState } from './../../store';
+
+export const CharactersComponent = () => {
   const [page, setPage] = useState(1);
-  const [characters, setCharacters] = useState<ICharacter[]>([]);
-  const [pagination, setPagination] = useState<IPagination>();
-  const characterController = new CharacterController();
-  useEffect(() => {
-    characterController.getCharacters(setCharacters, setPagination, props.searchStr, page);
-    console.log(localStorage.getItem('search'));
-  }, []);
+  const search = useSelector((state: RootState) => state.search.searchString);
+  const { data, isLoading } = useGetCharactersQuery({
+    page: page.toString(),
+    name: search,
+  });
 
-  console.log(pagination, characters);
   function changePage(event: MouseEvent, page: number) {
     setPage(page);
-    characterController.getCharacters(setCharacters, setPagination, props.searchStr, page);
   }
-  return (
-    <>
-      <div className={'character'}>
-        {characters.map((character) => {
-          return <CharacterItemComponent key={character.id} character={character} />;
-        })}
-      </div>
-      <PaginationComponent pagination={pagination} page={page} onChangePage={changePage} />
-    </>
-  );
+  if (isLoading) {
+    return <div>Loading...</div>;
+  } else {
+    return (
+      <>
+        <div className={'character'}>
+          {(data as ICharacterResult).results.map((character) => {
+            return <CharacterItemComponent key={character.id} character={character} />;
+          })}
+        </div>
+        <PaginationComponent
+          pagination={(data as ICharacterResult).info}
+          page={page}
+          onChangePage={changePage}
+        />
+      </>
+    );
+  }
 };

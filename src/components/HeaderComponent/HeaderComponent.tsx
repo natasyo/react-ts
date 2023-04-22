@@ -3,13 +3,8 @@ import * as React from 'react';
 import { SearchBar } from '../ui/SearchBar/SearchBar';
 import './HeaderComponent.scss';
 import { Link } from 'react-router-dom';
-import { ChangeEvent } from 'react';
-type Props = {
-  onSearch: (event: ChangeEvent) => void;
-};
-// type State = {};
 
-export class HeaderComponent extends React.Component<Props> {
+export class HeaderComponent extends React.Component {
   render() {
     return (
       <header className={'header'}>
@@ -25,12 +20,7 @@ export class HeaderComponent extends React.Component<Props> {
               Form
             </Link>
           </nav>
-          <SearchBar
-            onChangeValue={(event) => {
-              console.log('Header');
-              this.props.onSearch(event);
-            }}
-          />
+          <SearchBar />
         </div>
       </header>
     );
